@@ -1,0 +1,617 @@
+<html>
+    <head>
+        <title>goreview</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">  
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
+        <style> 
+            *{
+                margin: 0px;
+                padding: 0%;
+            }
+            h1 {
+                margin-top: 30px;
+                float: top;
+                color: white;
+                width: 100%;
+                left: 0px;
+                height: 50px;
+                text-size-adjust: 50;
+                text-align: center;
+            }
+            d {
+                float: top;
+                margin-left: 25px;
+                font-size: 20px;
+            }
+            nav {
+                margin-top: 50px;
+                height: 50px;
+                align-content: center;
+                text-align: center;
+                color: #849561;
+            }
+            nav li {
+                display: inline;
+                align-content: center;
+            }
+            .picture {
+                left: 10%;
+                float: top;                
+                height: 50px;
+                margin: 25px;
+            }
+            
+            img#a {
+                margin-top: 40px;
+                height: 220px;
+                width: 300px;
+            }    
+            .review{
+                margin-left: 340px;
+                color:#f2e7d5;
+                float: top;
+                
+                
+                font-size: 25;
+            }
+            body{
+                background-image: linear-gradient(to right, #12C2E9 , #F64F59);
+                margin: 0px;
+                font-size: 24;
+            }
+            a{
+                width: 150px;
+                margin: 50px;
+                margin-top: 200px;
+                height: 50px;
+                text-decoration: none;
+                color: darkgreen;        
+                font-size: 24;    
+            }
+            a:hover{
+                color: #EB1D36;
+            }
+            b{
+                float:right;
+                color: #9A0680;
+            }
+            b:hover{
+                color: #9BA17B;
+            }
+            d{
+                color: brown;
+            }
+            .search-box{
+                float: right;
+            }
+            .fa {
+                font-size: 50px;
+                cursor: pointer;
+                user-select: none;
+            }
+            .fa:hover {
+                color: darkblue;
+            }
+            footer{
+                margin-bottom: 0%;
+                font-size: 16;
+
+            }
+            .foot {
+                width: 100%;
+                color: white;
+                background-color: black;
+                float: left;
+                float: bottom;
+                
+            }
+            .foot .col {
+                width: 190px;
+                height: auto;
+                float: left;
+                box-sizing: border-box;
+                padding: 20px;
+            }
+            .foot .col h2 {
+                margin: 0;
+                padding: 0;
+                font-size: 15px;
+                line-height: 17px;
+                padding: 10px 0;
+                color: #FF0063;
+                text-transform: uppercase;
+            }
+            .foot .col ul {
+                list-style-type: none;
+                padding: 0;
+            }
+            .foot .col ul li {
+                color: white;
+                font-size: 12px;
+                padding: 5px 0px;
+            }
+            .address ul li {
+                display: inline-block;
+                padding-right: 5px !important;
+            }
+
+            .foot .col ul li:hover {
+                cursor: pointer;
+                color: lightgray;
+                font-weight: bold;
+            }
+            .clearfix {
+                clear: both;
+            }
+            @media only screen and (min-width: 1280px) {
+                .contain {
+                    width: 1200px;
+                    margin: 0 auto;
+                }
+            }
+            @media only screen and (max-width: 1139px) {
+                .contain .address {
+                    width: 1000px;
+                    display: block;
+                }
+                .address h2 {
+                    margin: 0px;
+                }
+            }
+            @media only screen and (max-width: 950px) {
+                .footer .col {
+                    width: 33%;
+                }
+                .footer .col h2 {
+                    font-size: 14px;
+                }
+                .footer .col ul li {
+                    font-size: 13px;
+                }
+            }
+            @media only screen and (max-width: 500px) {
+                    .footer .col {
+                    width: 50%;
+                    }
+                    .footer .col h2 {
+                    font-size: 14px;
+                    }
+                    .footer .col ul li {
+                    font-size: 13px;
+                    }
+            }
+            @media only screen and (max-width: 340px) {
+                .footer .col {
+                    width: 100%;
+                }
+            }
+            #set2 {
+                 display:flex;
+                 margin: 50px;
+                 align-content: center;
+            }
+            #set2 div{
+                text-align: center;
+                align-items: center;
+                margin:20px;
+                width:100%;
+            }
+            img#c{
+                height:300px;
+                width: 400px;
+            }
+            #count {
+                font-size: 20px;
+            }
+            #btn1 :hover{
+                background-color: skyblue;
+            }  
+            .container{
+                position: relative;
+                width: 400px;
+                background: #111;
+                padding: 20px 30px;
+                border: 1px solid #444;
+                border-radius: 5px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+            }
+            .container .post{
+                display: none;
+            }
+            .container .text{
+                font-size: 25px;
+                color: #666;
+                font-weight: 500;
+            }
+            .container .edit{
+                position: absolute;
+                right: 10px;
+                top: 5px;
+                font-size: 16px;
+                color: #666;
+                font-weight: 500;
+                cursor: pointer;
+            }
+            .container .edit:hover{
+                text-decoration: underline;
+            }
+            .container .star-widget input{
+                display: none;
+            }
+            .star-widget label{
+                font-size: 40px;
+                color: #444;
+                padding: 10px;
+                float: right;
+                transition: all 0.2s ease;
+            }
+            input:not(:checked) ~ label:hover,
+            input:not(:checked) ~ label:hover ~ label{
+                color: #fd4;
+            }
+            input:checked ~ label{
+                color: #fd4;
+            }
+            input#rate-5:checked ~ label{
+                color: #fe7;
+                text-shadow: 0 0 20px #952;
+            }
+            #rate-1:checked ~ form header:before{
+                content: "I just hate it ";
+            }
+            #rate-2:checked ~ form header:before{
+                content: "I don't like it ";
+            }
+            #rate-3:checked ~ form header:before{
+                content: "It is awesome ";
+            }
+            #rate-4:checked ~ form header:before{
+                content: "I just like it ";
+            }
+            #rate-5:checked ~ form header:before{
+                content: "I just love it ";
+            }
+            .container form{
+                display: none;
+            }
+            input:checked ~ form{
+                display: block;
+            }
+            form header{
+                width: 100%;
+                font-size: 25px;
+                color: #fe7;
+                font-weight: 500;
+                margin: 5px 0 20px 0;
+                text-align: center;
+                transition: all 0.2s ease;
+            }
+            form .textarea{
+                height: 100px;
+                width: 100%;
+                overflow: hidden;
+            }
+            form .textarea textarea{
+                height: 100%;
+                width: 100%;
+                outline: none;
+                color: #eee;
+                border: 1px solid #333;
+                background: #222;
+                padding: 10px;
+                font-size: 17px;
+                resize: none;
+            }
+            .textarea textarea:focus{
+                border-color: #444;
+            }
+            form .btn{
+                height: 45px;
+                width: 100%;
+                margin: 15px 0;
+            }
+            form .btn button{
+                height: 100%;
+                width: 100%;
+                border: 1px solid #444;
+                outline: none;
+                background: #222;
+                color: #999;
+                font-size: 17px;
+                font-weight: 500;
+                text-transform: uppercase;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+            form .btn button:hover{
+                background: #1b1b1b;
+            }
+
+            .dropbtn {
+  background-color: #3498DB;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #2980B9;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
+
+        </style>
+    </head>
+    <body>
+        <h1>
+            Welcome to GoREVIEW..!
+        </h1>
+        <nav>
+            <ul>                
+                <h2>
+                    <ul>
+                        <a href="home_.html">Home</a>
+                        <a href="cat1.html">Categorization 1.0</a>
+                        <a href="cat2.html">Categorization 2.0</a>
+                        <a href="mostliked.html">Most Liked</a>                  
+                        <input type="text" placeholder="search">                        
+                    </ul>
+                </h2>                                    
+            </ul>
+        </nav>
+        <div class="dropdown">
+            <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+            <div id="myDropdown" class="dropdown-content">
+              <a href="home_.html">Home</a>
+              <a href="cat1.html">About</a>
+              <a href="cat2.html">Contact</a>
+            </div>
+          </div>
+          
+          <script>
+          /* When the user clicks on the button, 
+          toggle between hiding and showing the dropdown content */
+          function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+          }
+          
+          // Close the dropdown if the user clicks outside of it
+          window.onclick = function(event) {
+            if (!event.target.matches('.dropbtn')) {
+              var dropdowns = document.getElementsByClassName("dropdown-content");
+              var i;
+              for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                  openDropdown.classList.remove('show');
+                }
+              }
+            }
+          }
+          </script>
+        <div class="picture">
+            <h4>Top Gun Maverick</h4>
+            <img id = "a" class = "poster" src="https://www.koimoi.com/wp-content/new-galleries/2022/05/cruise-never-toyed-with-ott-despite-two-year-delay-in-top-gun-maverick-release-001.jpg""/>
+        </div>
+        <div class="review">
+            May 27 2022    (Action)      <br>Available in amazon_prime</br>
+            After more than thirty years of service as one of the Navy’s top aviators,
+             Pete “Maverick” Mitchell (Tom Cruise) is where he belongs, pushing the 
+             envelope as a courageous test pilot and dodging the advancement in rank that
+             would ground him. When he finds himself training a detachment of Top Gun 
+             graduates for a specialized mission the likes of which no living pilot has ever 
+             seen, Maverick encounters Lt. Bradley Bradshaw (Miles Teller), call sign: “Rooster,” 
+             the son of Maverick's late friend and Radar Intercept Officer Lt. Nick Bradshaw, 
+             aka “Goose”.
+            <br>
+            <d href="#">
+                Rating 8.4/10
+            </d>
+            <br>
+            
+            <i onclick="myFunction(this)" class="fa fa-thumbs-up"></i>
+            <button id="btn1">Like here</button>
+            <p id="count">0</p>
+            <script>
+                btn1 = document.querySelector("#btn1");
+                count = document.querySelector("#count");
+                countValue = 0;
+          
+                btn1.onclick = function() {
+                  countValue += 1;
+                  count.innerHTML = countValue;
+                };
+            </script>
+
+<div class="container">
+    <div class="post">
+      <div class="text">Thanks for rating us!</div>
+      <div class="edit">EDIT</div>
+    </div>
+    <div class="star-widget">
+      <input type="radio" name="rate" id="rate-5">
+      <label for="rate-5" class="fas fa-star"></label>
+      <input type="radio" name="rate" id="rate-4">
+      <label for="rate-4" class="fas fa-star"></label>
+      <input type="radio" name="rate" id="rate-3">
+      <label for="rate-3" class="fas fa-star"></label>
+      <input type="radio" name="rate" id="rate-2">
+      <label for="rate-2" class="fas fa-star"></label>
+      <input type="radio" name="rate" id="rate-1">
+      <label for="rate-1" class="fas fa-star"></label>
+      <form action="#">
+        <header></header>
+        <div class="textarea">
+          <textarea cols="30" placeholder="Describe your experience.."></textarea>
+        </div>
+        <div class="btn">
+          <button type="submit">Post</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script>
+    const btn = document.querySelector("button");
+    const post = document.querySelector(".post");
+    const widget = document.querySelector(".star-widget");
+    const editBtn = document.querySelector(".edit");
+    btn.onclick = ()=>{
+      widget.style.display = "none";
+      post.style.display = "block";
+      editBtn.onclick = ()=>{
+        widget.style.display = "block";
+        post.style.display = "none";
+      }
+      return false;
+    }
+  </script>
+<!-- Code injected by live-server -->
+<script>
+  // <![CDATA[  <-- For SVG support
+  if ('WebSocket' in window) {
+      (function () {
+          function refreshCSS() {
+              var sheets = [].slice.call(document.getElementsByTagName("link"));
+              var head = document.getElementsByTagName("head")[0];
+              for (var i = 0; i < sheets.length; ++i) {
+                  var elem = sheets[i];
+                  var parent = elem.parentElement || head;
+                  parent.removeChild(elem);
+                  var rel = elem.rel;
+                  if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+                      var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+                      elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+                  }
+                  parent.appendChild(elem);
+              }
+          }
+          var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+          var address = protocol + window.location.host + window.location.pathname + '/ws';
+          var socket = new WebSocket(address);
+          socket.onmessage = function (msg) {
+              if (msg.data == 'reload') window.location.reload();
+              else if (msg.data == 'refreshcss') refreshCSS();
+          };
+          if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+              console.log('Live reload enabled.');
+              sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+          }
+      })();
+  }
+  else {
+      console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+  }
+  // ]]>
+</script>
+            <div>
+
+            </div>
+        </div>
+        <br>
+        <div id="set2">
+            <div>
+                <img id="c" src="https://sm.mashable.com/t/mashable_in/article/t/this-titan/this-titanic-remastered-movie-poster-has-everyone-asking-the_cwkb.1248.jpg"/>
+                <br>
+                <a href="#">Drama/Romance</a>
+            </div>     
+            <div>
+                <img id="c" src="https://rukminim1.flixcart.com/image/416/416/poster/q/r/v/posterskart-interstellar-movie-poster-pkis04-medium-original-imaebctvytcgcgcx.jpeg?q=70"/>
+                <a href="#">Scientific Fiction</a>
+            </div>
+            <div>
+                <img id="c" src="https://images.hindustantimes.com/img/2022/04/01/550x309/RRR-Movie-Review_1648825470847_1648825479894.jpg"/>
+                <a href="#">Action</a>
+            </div>      
+                  
+        </div>
+        <footer>
+            <div class="foot">
+                <b href="#">terms and conditons apply</b>
+                Copyright area, contact us : Mobile number <br>or <br>@mail_id
+                <div class="contain">
+                <div class="col">
+                  <h2>Company</h2>
+                  <ul>
+                    <li>About us</li>
+                    <li> Our Mission</li>
+                    <li>Services</li>
+                  </ul>
+                </div>
+                <div class="col">
+                  <h2>Products</h2>
+                  <ul>
+                    <li>SEO</li>
+                    <li>Content Development</li>
+                    <li>Digital Marketing</li>
+                  </ul>
+                </div>
+                <div class="col">
+                  <h2>Team</h2>
+                  <ul>
+                    <li>HR Team</li>
+                    <li>Finance Team</li>
+                    <li>Content Team</li>
+                  </ul>
+                </div>
+                <div class="col">
+                  <h2>Resources</h2>
+                  <ul>
+                    <li>Webmail</li>
+                    <li>Web templates</li>
+                    <li>Email templates</li>
+                  </ul>
+                </div>
+                <div class="col">
+                  <h2>Contact</h2>
+                  <ul>
+                    <li>+91 mobile number1</li>
+                    <li>contact us</li>
+                    <li>abcd@gmail.com</li>
+                  </ul>
+                </div>
+                <div class="col address">
+                  <h2>Address </h2>
+                  <ul>
+                    <li>Sky Towers, Service Road, Kolkata</li>
+                </ul>
+                </div>
+              <div class="clearfix"></div>
+              </div>
+              </div>
+        </footer>
+    </body>
+    <script>
+        function myFunction(x) {
+        x.classList.toggle("fa-thumbs-down");
+        }
+    </script>
+</html>
